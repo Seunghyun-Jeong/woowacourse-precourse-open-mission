@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/woowacourse-precourse-open-mission.iml" filepath="$PROJECT_DIR$/woowacourse-precourse-open-mission.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/woowacourse-precourse-open-mission.iml" filepath="$PROJECT_DIR$/.idea/modules/woowacourse-precourse-open-mission.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/woowacourse-precourse-open-mission.main.iml" filepath="$PROJECT_DIR$/.idea/modules/woowacourse-precourse-open-mission.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/woowacourse-precourse-open-mission.test.iml" filepath="$PROJECT_DIR$/.idea/modules/woowacourse-precourse-open-mission.test.iml" />
     </modules>
   </component>
 </project>

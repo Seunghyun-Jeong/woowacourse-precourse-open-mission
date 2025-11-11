@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "2.0.21"
     application
 }
 
@@ -8,9 +8,11 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven("https://jitpack.io")
 }
 
 dependencies {
+    implementation("com.github.woowacourse-projects:mission-utils:1.2.0")
     testImplementation(kotlin("test"))
 }
 
@@ -19,7 +21,7 @@ tasks.test {
 }
 
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(21)
 }
 
 application {
