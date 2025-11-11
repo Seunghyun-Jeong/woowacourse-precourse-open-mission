@@ -1,7 +1,6 @@
 package lotto.controller
 
 import lotto.service.LottoGameService
-import lotto.validate.MoneyValidator
 import lotto.view.LottoGameView
 
 class LottoGameController {
@@ -10,23 +9,23 @@ class LottoGameController {
 
     fun execute() {
         val purchaseMoney = inputPurchaseMoney()
+        val purchaseCount = service.getPurchaseLottoCount(purchaseMoney)
     }
 
     fun inputPurchaseMoney(): Int {
         while (true) {
-            println("구입금액을 입력해 주세요.")
+            view.printInputPurchaseMoney()
             val input = readln()
             try {
-                val purchaseMoney = input?.toInt() ?: throw NumberFormatException()
-                MoneyValidator(purchaseMoney)
+                val purchaseMoney = input.toInt()
+                service.validateMoney(purchaseMoney)
                 println()
                 return purchaseMoney
             } catch (e: NumberFormatException) {
-                println("[ERROR] 숫자만 입력해 주세요.")
+                view.printNumberFormatError()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
     }
-
 }

@@ -1,7 +1,15 @@
 package lotto.view
 
 class LottoGameView {
-    fun printPurchaseCount(lottoCount: Int) {
-        println("${lottoCount}개를 구매합니다.")
+    companion object {
+        private const val ERROR_MESSEGE = "[ERROR]"
+    }
+
+    fun printInputPurchaseMoney() {
+        println("구입금액을 입력해 주세요.")
+    }
+
+    fun printNumberFormatError() {
+        println("$ERROR_MESSEGE 숫자만 입력해 주세요.")
     }
 }

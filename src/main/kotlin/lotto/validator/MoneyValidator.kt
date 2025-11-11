@@ -1,4 +1,4 @@
-package lotto.validate
+package lotto.validator
 
 class MoneyValidator(private val purchaseMoney: Int) {
     companion object {
@@ -7,7 +7,7 @@ class MoneyValidator(private val purchaseMoney: Int) {
 
     init {
         if (purchaseMoney % LOTTO_PRICE != 0) {
-            throw IllegalArgumentException("[ERROR] 1,000원 단위로 입력해 주세요.")
+            throw IllegalArgumentException("1,000원 단위로 입력해 주세요.")
         }
     }
 }
