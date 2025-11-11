@@ -10,6 +10,7 @@ class LottoGameController {
     fun execute() {
         val purchaseMoney = inputPurchaseMoney()
         val purchaseCount = service.getPurchaseLottoCount(purchaseMoney)
+        view.printPurchaseCount(purchaseCount)
     }
 
     fun inputPurchaseMoney(): Int {
