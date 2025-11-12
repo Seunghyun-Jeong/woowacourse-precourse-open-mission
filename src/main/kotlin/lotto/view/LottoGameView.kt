@@ -1,5 +1,7 @@
 package lotto.view
 
+import lotto.domain.Lotto
+
 class LottoGameView {
     companion object {
         private const val ERROR_MESSEGE = "[ERROR]"
@@ -23,5 +25,10 @@ class LottoGameView {
 
     fun printManualLottoNumbers() {
         println("수동 로또 번호를 입력해 주세요.")
+    }
+
+    fun printAutoLottoNumbers(autoLottoNumbers: List<Lotto>) {
+        println("자동으로 생성된 로또 번호")
+        autoLottoNumbers.forEach { it.printNumbers() }
     }
 }

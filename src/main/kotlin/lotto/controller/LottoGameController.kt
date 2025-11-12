@@ -14,6 +14,9 @@ class LottoGameController {
         view.printPurchaseCount(purchaseCount)
         val manualLottoCount = inputManualLottoCount(purchaseCount)
         val manualLottoNumbers = inputManualLottoNumbers(manualLottoCount)
+        val autoLottoCount = purchaseCount - manualLottoCount
+        val autoLottoNumbers = service.getAutoLottoNumbers(autoLottoCount)
+        view.printAutoLottoNumbers(autoLottoNumbers)
     }
 
     private fun inputPurchaseMoney(): Int {

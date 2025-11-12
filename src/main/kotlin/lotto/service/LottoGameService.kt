@@ -1,11 +1,16 @@
 package lotto.service
 
+import camp.nextstep.edu.missionutils.Randoms
+import lotto.domain.Lotto
 import lotto.validator.MoneyValidator
 import lotto.validator.ManualLottoValidator
 
 class LottoGameService {
     companion object {
         private const val LOTTO_PRICE = 1000
+        private const val MIN_NUMBER = 1
+        private const val MAX_NUMBER = 45
+        private const val LOTTO_NUMBER_COUNT = 6
     }
 
     fun validatePurchaseMoney(purchaseMoney: Int) {
@@ -19,5 +24,16 @@ class LottoGameService {
     fun getPurchaseLottoCount(purchaseMoney: Int): Int {
         val purchaseCount = purchaseMoney / LOTTO_PRICE
         return purchaseCount
+    }
+
+    fun getAutoLottoNumbers(autoLottoCount: Int): List<Lotto> {
+        val autoLottoNumbers = mutableListOf<Lotto>()
+
+        repeat(autoLottoCount) {
+            val autoLottoNumber = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_COUNT).toList().sorted()
+            autoLottoNumbers.add(Lotto(autoLottoNumber))
+        }
+
+        return autoLottoNumbers
     }
 }
