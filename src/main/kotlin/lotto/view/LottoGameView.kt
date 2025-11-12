@@ -20,4 +20,8 @@ class LottoGameView {
     fun printManualLottoCount(purchaseCount: Int) {
         println("수동으로 몇 개를 구매하시겠습니까? (0~${purchaseCount})")
     }
+
+    fun printManualLottoNumbers() {
+        println("수동 로또 번호를 입력해 주세요.")
+    }
 }
