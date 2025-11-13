@@ -30,5 +30,11 @@ class LottoGameView {
     fun printAutoLottoNumbers(autoLottoNumbers: List<Lotto>) {
         println("자동으로 생성된 로또 번호")
         autoLottoNumbers.forEach { it.printNumbers() }
+        println()
+    }
+
+    fun printAllLottoNumbers(allLottoNumbers: List<Lotto>) {
+        println("구매한 모든 로또 번호")
+        allLottoNumbers.forEach { it.printNumbers() }
     }
 }
