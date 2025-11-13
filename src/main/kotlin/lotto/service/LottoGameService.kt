@@ -36,4 +36,18 @@ class LottoGameService {
 
         return autoLottoNumbers
     }
+
+    fun getWinningLottoNumbers(): Lotto {
+        val winningLottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_COUNT).toList().sorted()
+        return Lotto(winningLottoNumbers)
+    }
+
+    fun getWinningBonusNumber(winningLottoNumbers: Lotto): Int {
+        while (true) {
+            val bonusNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
+            if (bonusNumber !in winningLottoNumbers.getNumbers()) {
+                return bonusNumber
+            }
+        }
+    }
 }

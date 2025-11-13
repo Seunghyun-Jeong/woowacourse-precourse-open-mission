@@ -19,6 +19,9 @@ class LottoGameController {
         view.printAutoLottoNumbers(autoLottoNumbers)
         val allLottoNumbers = manualLottoNumbers + autoLottoNumbers
         view.printAllLottoNumbers(allLottoNumbers)
+        val winningLottoNumbers = service.getWinningLottoNumbers()
+        val bonusNumber = service.getWinningBonusNumber(winningLottoNumbers)
+        view.printWinningLottoNumbersAndBonusNumber(winningLottoNumbers, bonusNumber)
     }
 
     private fun inputPurchaseMoney(): Int {
