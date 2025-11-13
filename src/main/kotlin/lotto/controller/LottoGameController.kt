@@ -12,13 +12,17 @@ class LottoGameController {
         val purchaseMoney = inputPurchaseMoney()
         val purchaseCount = service.getPurchaseLottoCount(purchaseMoney)
         view.printPurchaseCount(purchaseCount)
+
         val manualLottoCount = inputManualLottoCount(purchaseCount)
         val manualLottoNumbers = inputManualLottoNumbers(manualLottoCount)
+
         val autoLottoCount = purchaseCount - manualLottoCount
         val autoLottoNumbers = service.getAutoLottoNumbers(autoLottoCount)
         view.printAutoLottoNumbers(autoLottoNumbers)
+
         val allLottoNumbers = manualLottoNumbers + autoLottoNumbers
         view.printAllLottoNumbers(allLottoNumbers)
+
         val winningLottoNumbers = service.getWinningLottoNumbers()
         val bonusNumber = service.getWinningBonusNumber(winningLottoNumbers)
         view.printWinningLottoNumbersAndBonusNumber(winningLottoNumbers, bonusNumber)
