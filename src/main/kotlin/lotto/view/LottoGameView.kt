@@ -36,11 +36,13 @@ class LottoGameView {
     fun printAllLottoNumbers(allLottoNumbers: List<Lotto>) {
         println("구매한 모든 로또 번호")
         allLottoNumbers.forEach { it.printNumbers() }
+        println()
     }
 
     fun printWinningLottoNumbersAndBonusNumber(winningLottoNumbers: Lotto, bonusNumber: Int) {
         println("당첨 번호")
         winningLottoNumbers.printNumbers()
+        println()
         println("보너스 번호")
         println(bonusNumber)
         println()
