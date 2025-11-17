@@ -39,19 +39,17 @@ class LottoGameService {
     }
 
     fun getWinningLottoNumbers(): Lotto {
-//        val winningLottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_COUNT).toList().sorted()
-//        return Lotto(winningLottoNumbers)
-        return Lotto(listOf(1,2,3,4,5,6))
+        val winningLottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_COUNT).toList().sorted()
+        return Lotto(winningLottoNumbers)
     }
 
     fun getWinningBonusNumber(winningLottoNumbers: Lotto): Int {
-//        while (true) {
-//            val bonusNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
-//            if (bonusNumber !in winningLottoNumbers.getNumbers()) {
-//                return bonusNumber
-//            }
-//        }
-        return 7
+        while (true) {
+            val bonusNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
+            if (bonusNumber !in winningLottoNumbers.getNumbers()) {
+                return bonusNumber
+            }
+        }
     }
 
     fun matchWinning(winningLotto: Lotto, purchasedLottos: List<Lotto>, bonusNumber: Int): MutableMap<WinningLottoType, Int> {
