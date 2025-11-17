@@ -2,6 +2,7 @@ package lotto.service
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.domain.Lotto
+import lotto.domain.WinningLottoType
 import lotto.validator.MoneyValidator
 import lotto.validator.ManualLottoValidator
 
@@ -38,16 +39,35 @@ class LottoGameService {
     }
 
     fun getWinningLottoNumbers(): Lotto {
-        val winningLottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_COUNT).toList().sorted()
-        return Lotto(winningLottoNumbers)
+//        val winningLottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_COUNT).toList().sorted()
+//        return Lotto(winningLottoNumbers)
+        return Lotto(listOf(1,2,3,4,5,6))
     }
 
     fun getWinningBonusNumber(winningLottoNumbers: Lotto): Int {
-        while (true) {
-            val bonusNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
-            if (bonusNumber !in winningLottoNumbers.getNumbers()) {
-                return bonusNumber
+//        while (true) {
+//            val bonusNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER)
+//            if (bonusNumber !in winningLottoNumbers.getNumbers()) {
+//                return bonusNumber
+//            }
+//        }
+        return 7
+    }
+
+    fun matchWinning(winningLotto: Lotto, purchasedLottos: List<Lotto>, bonusNumber: Int): MutableMap<WinningLottoType, Int> {
+
+        val resultMap = WinningLottoType.values().associateWith { 0 }.toMutableMap()
+
+        for (lotto in purchasedLottos) {
+            val matchCount = winningLotto.matchCount(lotto)
+            val matchBonus = lotto.containsBonusNumber(bonusNumber)
+
+            val type = WinningLottoType.getWinningLottoTypeByMatch(matchCount, matchBonus)
+            if (type != null) {
+                resultMap[type] = resultMap[type]!! + 1
             }
         }
+
+        return resultMap
     }
 }

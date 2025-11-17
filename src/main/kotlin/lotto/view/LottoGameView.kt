@@ -1,6 +1,7 @@
 package lotto.view
 
 import lotto.domain.Lotto
+import lotto.domain.WinningLottoType
 
 class LottoGameView {
     companion object {
@@ -46,5 +47,29 @@ class LottoGameView {
         println("보너스 번호")
         println(bonusNumber)
         println()
+    }
+
+    fun printWinningResult(resultMap: Map<WinningLottoType, Int>, purchaseMoney: Int) {
+        println("당첨 통계")
+
+        var totalReward = 0
+
+        for (type in WinningLottoType.values()) {
+            val count = resultMap[type] ?: 0
+            println("${type.comment} - ${count}개")
+
+            if (count == 0) continue
+
+            if (type.multipleReward) {
+                // 여러 개 당첨 → 전부 지급
+                totalReward += type.reward * count
+            } else {
+                // 여러 개 당첨이더라도 → 1번만 지급
+                totalReward += type.reward
+            }
+        }
+
+        val rate = totalReward * 100.0 / purchaseMoney
+        println("총 수익률은 ${"%.1f".format(rate)}%입니다.")
     }
 }

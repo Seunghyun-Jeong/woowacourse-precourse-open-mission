@@ -22,4 +22,12 @@ class Lotto(private val numbers: List<Int>) {
     fun printNumbers() {
         println(numbers)
     }
+
+    fun matchCount(other: Lotto): Int {
+        return numbers.count { other.numbers.contains(it) }
+    }
+
+    fun containsBonusNumber(bonusNumber: Int): Boolean {
+        return numbers.contains(bonusNumber)
+    }
 }
