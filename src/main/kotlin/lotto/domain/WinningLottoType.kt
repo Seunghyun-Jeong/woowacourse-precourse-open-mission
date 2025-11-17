@@ -11,7 +11,7 @@ enum class WinningLottoType(val comment: String, val reward: Int, val matchCount
         fun getWinningLottoTypeByMatch(matchCount: Int, matchBonus: Boolean): WinningLottoType? {
             return values().firstOrNull { type ->
                 type.matchCount == matchCount &&
-                        (type.bonusMatch == matchBonus) // 보너스 일치 여부 정확히 확인
+                        (type.bonusMatch == matchBonus)
             } ?: values().firstOrNull { type ->
                 type.matchCount == matchCount && !type.bonusMatch
             }

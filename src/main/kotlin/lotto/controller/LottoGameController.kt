@@ -3,6 +3,7 @@ package lotto.controller
 import lotto.domain.Lotto
 import lotto.service.LottoGameService
 import lotto.view.LottoGameView
+import camp.nextstep.edu.missionutils.Console
 
 class LottoGameController {
     private val service = LottoGameService()
@@ -35,7 +36,7 @@ class LottoGameController {
     private fun inputPurchaseMoney(): Int {
         while (true) {
             view.printInputPurchaseMoney()
-            val inputPurchaseMoney = readln()
+            val inputPurchaseMoney = Console.readLine()
             try {
                 val purchaseMoney = inputPurchaseMoney.toInt()
                 service.validatePurchaseMoney(purchaseMoney)
@@ -52,7 +53,7 @@ class LottoGameController {
     private fun inputManualLottoCount(purchaseCount: Int): Int {
         while (true) {
             view.printManualLottoCount(purchaseCount)
-            val inputManualLottoCount = readln()
+            val inputManualLottoCount = Console.readLine()
             try {
                 val manualLottoCount = inputManualLottoCount.toInt()
                 service.validateManualLottoCount(manualLottoCount, purchaseCount)
