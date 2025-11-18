@@ -17,10 +17,12 @@ class LottoGameView {
     }
 
     fun printPurchaseCount(purchaseCount: Int) {
+        println()
         println("${purchaseCount}개를 구매합니다.")
     }
 
     fun printManualLottoCount(purchaseCount: Int) {
+        println()
         println("수동으로 몇 개를 구매하시겠습니까? (0~${purchaseCount})")
     }
 
@@ -29,6 +31,7 @@ class LottoGameView {
     }
 
     fun printAutoLottoNumbers(autoLottoNumbers: List<Lotto>) {
+        println()
         println("자동으로 생성된 로또 번호")
         autoLottoNumbers.forEach { it.printNumbers() }
         println()
