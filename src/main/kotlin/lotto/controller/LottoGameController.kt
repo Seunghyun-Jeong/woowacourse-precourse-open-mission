@@ -40,7 +40,6 @@ class LottoGameController {
             try {
                 val purchaseMoney = inputPurchaseMoney.toInt()
                 service.validatePurchaseMoney(purchaseMoney)
-                println()
                 return purchaseMoney
             } catch (e: NumberFormatException) {
                 view.printNumberFormatError()
@@ -57,7 +56,6 @@ class LottoGameController {
             try {
                 val manualLottoCount = inputManualLottoCount.toInt()
                 service.validateManualLottoCount(manualLottoCount, purchaseCount)
-                println()
                 return manualLottoCount
             } catch (e: NumberFormatException) {
                 view.printNumberFormatError()
@@ -79,7 +77,7 @@ class LottoGameController {
         repeat(manualLottoCount) {
             while (true) {
                 try {
-                    val inputManualLottoNumbers = readln()
+                    val inputManualLottoNumbers = Console.readLine()
                     val manualLottoNumbers = inputManualLottoNumbers.split(",").map {it.trim().toInt()}.sorted()
 
                     val manualLotto = Lotto(manualLottoNumbers)
@@ -93,7 +91,6 @@ class LottoGameController {
             }
         }
 
-        println()
         return manualLottos
     }
 }
